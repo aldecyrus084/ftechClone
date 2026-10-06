@@ -863,6 +863,17 @@ else if($request == "verify_license")
 {
 	$license_key = $_POST['license_key'] ; 
 	$result = $db->verify_license2($license_key); 
+    if(!empty($result))
+        {
+            echo json_encode([
+                'status' => 'success'
+            ]);
+        }
+        else {
+            echo json_encode([
+                'status' => 'error'
+            ]);
+        }
     echo $result; 
 } 
 else if($request == "verify")

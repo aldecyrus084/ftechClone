@@ -4,7 +4,7 @@
     <div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content"> 
-                <form class="needs-validation" novalidate id = "myFormx">
+                <form class="needs-validation was-validated" novalidate id = "myFormx">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5">Update Details</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

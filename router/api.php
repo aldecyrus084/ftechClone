@@ -37,45 +37,9 @@ else if($request == 'activate_licensed')
 	$licenseKey = $_POST['licenseKey'];
 	$machineID  = $_POST['machineID'];
 
-	$url = "https://ftech-centralized.com/index.php/api/activateLicense";
-
-	$curl = curl_init();
-	curl_setopt($curl, CURLOPT_URL, $url);
-	curl_setopt($curl, CURLOPT_POST, true);
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-	// Set headers
-	$headers = array(
-		"Content-Type: application/x-www-form-urlencoded"
-	);
-	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-
-	// Correctly formatted POST data
-	$data = http_build_query([
-		'licenseKey' => $licenseKey,
-		'machineID'  => $machineID,
-		'pc_based'   => true
-	]);
-	curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-
-	// Debug only: disable SSL verification (use with caution)
-	curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-	// Execute request
-	$resp = curl_exec($curl);
-	$err = curl_error($curl);
-	curl_close($curl);
-
-	// Output
-	if ($err) {
-		echo json_encode([
-			'status'  => 'error',
-			'msg' => 'cURL Error: ' . $err
-		]);
-	} else {
-		echo $resp;
-	}
+	$result = $api->activate_licensed($licenseKey, $machineID);
+	echo $result;
+	
 }
 else if($request == 'bindVendo')
 {

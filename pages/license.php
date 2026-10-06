@@ -192,7 +192,8 @@ function verify_license()
 		{
 			$.post("../router/router.php", {'request': 'verify_license', license_key: license_key}, function(data)
 			{    
-				if(data)
+				var response = JSON.parse(data);
+				if(response.status == "success")
 				{
 					Swal.fire({
 					  title: "Licensed Activated",

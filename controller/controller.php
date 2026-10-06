@@ -2200,11 +2200,13 @@ class CONTROLLER extends MODEL
 			}
 		}
 	} */
+
 	  
 	function verify_license2($license_key)
 	{
-		$reslt = $this->sqlnonquery("Call update_when_valid_license('".$license_key."')");
-		return $reslt;
+		$sql = "SELECT license_key, machine_id, isActive FROM license WHERE license_key = ? LIMIT 1";
+		$result = $this->sqlquery($sql, [$license_key]);
+		return $result;
 	}
  
 	
